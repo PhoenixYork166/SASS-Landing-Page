@@ -1,8 +1,76 @@
 /*
 COLORS:
 
-Light green: #7ed56f
+Light green: #7ed56f - rgba(126, 213, 111, 1)
 Medium green: #55c57a
-Dark green: #28b485
+Dark green: #28b485 - rgba(40, 180, 133, 1)
 
 */
+
+/* Normalize browsers - Basic Reset */
+*,*::before,*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* To be inherited by child elements */
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #777;
+    padding: 1.875rem;
+}
+
+.header {
+    height: 95vh; /* To almost 100% */
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba(126, 213, 111, 0.8), 
+        rgba(40, 180, 131, 0.8)), 
+        url('../img/hero.jpg');
+    background-size: cover; /* to fit the box */
+    background-position: top; /* Top of img always stays top */
+    position: relative; /* parent of .logo-box */
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    /* clip-path: polygon(0 0, 100% 50%, 0 100%); */
+}
+
+.logo-box { 
+    position: absolute; /* parent = .header */
+    top: 2.5rem;
+    left: 2.5rem;
+}
+
+.logo-box > .logo {
+    height: 2.1875rem;
+}
+
+.text-box {
+    position: absolute;
+    top: 40%;
+    left: 25%;
+}
+
+.heading-primary {
+    color: white;
+    text-transform: uppercase;
+}
+
+.heading-primary-main {
+    display: block; /* <span> is inline by default */
+    font-size: 3.75rem;
+    font-weight: 400;
+    letter-spacing: 2rem;
+
+    /* centering TEXT */
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 1.1rem;
+}
