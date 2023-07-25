@@ -38,7 +38,7 @@ body {
     /* clip-path: polygon(0 0, 100% 50%, 0 100%); */
 }
 
-.logo-box { 
+.header > .logo-box { 
     position: absolute; /* parent = .header */
     top: 2.5rem;
     left: 2.5rem;
@@ -48,29 +48,82 @@ body {
     height: 2.1875rem;
 }
 
-.text-box {
+.header > .text-box {
     position: absolute;
     top: 40%;
     left: 25%;
 }
 
-.heading-primary {
+.text-box > .heading-primary {
     color: white;
     text-transform: uppercase;
+
+    /* Remove shaky behaviour in children animations */
+    backface-visibility: hidden;
 }
 
-.heading-primary-main {
+.heading-primary > .heading-primary-main {
     display: block; /* <span> is inline by default */
     font-size: 3.75rem;
     font-weight: 400;
     letter-spacing: 2rem;
 
-    /* centering TEXT */
+    /* Animation */
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    
 }
 
-.heading-primary-sub {
+.heading-primary > .heading-primary-sub {
     display: block;
     font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: 1.1rem;
+
+    /* Animation */
+    animation-iteration-count: 1;
+    animation: moveInRight 1s ease-out;
+}
+
+/* Animations */
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-6.25rem);
+    }
+
+    30% {
+
+    }
+
+    80% {
+        transform: translateX(0.625rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(6.25rem);
+    }
+
+    30% {
+
+    }
+
+    80% {
+        transform: translateX(-0.625rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
