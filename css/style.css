@@ -52,6 +52,7 @@ body {
     position: absolute;
     top: 40%;
     left: 25%;
+    text-align: center;
 }
 
 .text-box > .heading-primary {
@@ -60,6 +61,7 @@ body {
 
     /* Remove shaky behaviour in children animations */
     backface-visibility: hidden;
+    margin-bottom: 3.75rem;
 }
 
 .heading-primary > .heading-primary-main {
@@ -70,7 +72,7 @@ body {
 
     /* Animation */
     animation-name: moveInLeft;
-    animation-duration: 1s;
+    animation-duration: 6s;
     animation-iteration-count: 1;
     animation-timing-function: ease-out;
     
@@ -84,27 +86,35 @@ body {
 
     /* Animation */
     animation-iteration-count: 1;
-    animation: moveInRight 1s ease-out;
+    animation: moveInRight 6s ease-out;
 }
 
 /* Animations */
 @keyframes moveInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-6.25rem);
+        transform: translate3d(-6.25rem, -25rem, 0);
     }
 
-    30% {
+    25% {
+        transform: translate3d(-18rem, -15rem, 0) rotate(350deg);
+    }
 
+    40% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    60% {
+        transform: translate3d(18rem, -15rem, 0) rotate(180deg);
     }
 
     80% {
-        transform: translateX(0.625rem);
+        transform: translate3d(0, -25rem, 0) rotate(360deg);
     }
 
     100% {
         opacity: 1;
-        transform: translateX(0);
+        transform: translate3d(0);
     }
 }
 
@@ -127,3 +137,104 @@ body {
         transform: translateX(0);
     }
 }
+
+/* for Discover our tour button */
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(2rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* pseudo class */
+.btn:link, 
+.btn:visited { 
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .1s ease-in;
+    position: relative;
+}
+
+/* Only Discover our tour button will have animation */
+.btn-animated {
+    animation: moveInBottom 1s ease-out .75s;
+    animation-fill-mode: backwards;
+    /* animation 100% => 0% */
+    /* automatically applies to this style of 0% before animation starts */
+    
+    /* 
+    animation: 
+        animation-name 
+        animation-duration 
+        animation-timing-function 
+        animation-delay;
+    */
+}
+
+.btn:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); 
+    /* box-shadow: offset-x offset-y blur rgba; */
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-white {
+    background-color: white;
+    color: #777;
+}
+
+/* 
+Initial State of pseudo element
+.btn = parent
+.btn::after = child
+*/ 
+.btn::after {
+    /* Must declare content && display properties */
+    content: "";
+    display: inline-block;
+    /* pseudo elements are treated as children */
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* position: absolute need a reference 
+    from parent box with position: relative
+    In this case:
+    .btn::after (child) 
+    .btn (parent)
+    */
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: white;
+    color: #777;
+}
+
+/* 
+2nd State of pseudo element
+pseudo element after for .btn:hover state
+Make pseudo element grow && fade-out 
+.btn::after = parent
+.btn:hover::after = child
+*/
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
