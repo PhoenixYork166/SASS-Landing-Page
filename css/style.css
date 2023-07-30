@@ -1,240 +1,193 @@
-/*
-COLORS:
-
-Light green: #7ed56f - rgba(126, 213, 111, 1)
-Medium green: #55c57a
-Dark green: #28b485 - rgba(40, 180, 133, 1)
-
-*/
-
+/* Color variables */
 /* Normalize browsers - Basic Reset */
-*,*::before,*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  /* font-size: 10px; */
+  /* now 1rem = 10px */
+  /* font-size: 100% => 16px */
+  font-size: 62.5%; }
 
 /* To be inherited by child elements */
 body {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #777;
-    padding: 1.875rem;
-}
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 1rem; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  /* 30px */
+  box-sizing: border-box; }
 
 .header {
-    height: 95vh; /* To almost 100% */
-    background-image: linear-gradient(
-        to right bottom, 
-        rgba(126, 213, 111, 0.8), 
-        rgba(40, 180, 131, 0.8)), 
-        url('../img/hero.jpg');
-    background-size: cover; /* to fit the box */
-    background-position: top; /* Top of img always stays top */
-    position: relative; /* parent of .logo-box */
-    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
-    /* clip-path: polygon(0 0, 100% 50%, 0 100%); */
-}
-
-.header > .logo-box { 
-    position: absolute; /* parent = .header */
-    top: 2.5rem;
-    left: 2.5rem;
-}
-
-.logo-box > .logo {
-    height: 2.1875rem;
-}
-
-.header > .text-box {
+  height: 95vh;
+  /* To almost 100% */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+  background-size: cover;
+  /* to fit the box */
+  background-position: top;
+  /* Top of img always stays top */
+  position: relative;
+  /* parent of .logo-box */
+  clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  /* clip-path: polygon(0 0, 100% 50%, 0 100%); */ }
+  .header__logo-box {
+    position: absolute;
+    /* parent = .header */
+    top: 4rem;
+    /* 40px */
+    left: 4rem;
+    /* 40px */ }
+  .header__logo {
+    height: 3.5rem;
+    /* 35px */ }
+  .header__text-box {
     position: absolute;
     top: 40%;
     left: 25%;
-    text-align: center;
-}
+    text-align: center; }
 
-.text-box > .heading-primary {
-    color: white;
-    text-transform: uppercase;
-
-    /* Remove shaky behaviour in children animations */
-    backface-visibility: hidden;
-    margin-bottom: 3.75rem;
-}
-
-.heading-primary > .heading-primary-main {
-    display: block; /* <span> is inline by default */
-    font-size: 3.75rem;
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* Remove shaky behaviour in children animations */
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+  /* 60px */ }
+  .heading-primary--main {
+    display: block;
+    /* <span> is inline by default */
+    font-size: 6rem;
+    /* 60px */
     font-weight: 400;
-    letter-spacing: 2rem;
-
+    letter-spacing: 3.5rem;
+    /* 35px */
     /* Animation */
     animation-name: moveInLeft;
     animation-duration: 6s;
     animation-iteration-count: 1;
-    animation-timing-function: ease-out;
-    
-}
-
-.heading-primary > .heading-primary-sub {
+    animation-timing-function: ease-out; }
+  .heading-primary--sub {
     display: block;
-    font-size: 1.25rem;
+    font-size: 2rem;
+    /* 20px */
     font-weight: 700;
-    letter-spacing: 1.1rem;
-
+    letter-spacing: 1.74rem;
+    /* 17.4px */
     /* Animation */
     animation-iteration-count: 1;
-    animation: moveInRight 6s ease-out;
-}
+    animation: moveInRight 6s ease-out; }
 
 /* Animations */
+/* For Upper header */
 @keyframes moveInLeft {
-    0% {
-        opacity: 0;
-        transform: translate3d(-6.25rem, -25rem, 0);
-    }
-
-    25% {
-        transform: translate3d(-18rem, -15rem, 0) rotate(350deg);
-    }
-
-    40% {
-        transform: translate3d(0, 0, 0);
-    }
-
-    60% {
-        transform: translate3d(18rem, -15rem, 0) rotate(180deg);
-    }
-
-    80% {
-        transform: translate3d(0, -25rem, 0) rotate(360deg);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate3d(0);
-    }
-}
+  0% {
+    opacity: 0;
+    transform: translate3d(-10rem, -40rem, 0);
+    /* 100px, 400px, 0 */ }
+  25% {
+    transform: translate3d(-28.8rem, -24rem, 0) rotate(350deg);
+    /* 288px, 240px, 0 */ }
+  40% {
+    transform: translate3d(0, 0, 0); }
+  60% {
+    transform: translate3d(28.8rem, -24rem, 0) rotate(180deg);
+    /* 288px, 240px, 0 */ }
+  80% {
+    transform: translate3d(0, -40rem, 0) rotate(360deg);
+    /* 0, 400px, 0 */ }
+  100% {
+    opacity: 1;
+    transform: translate3d(0); } }
 
 @keyframes moveInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(6.25rem);
-    }
-
-    30% {
-
-    }
-
-    80% {
-        transform: translateX(-0.625rem);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+    /* 100px */ }
+  30% { }
+  80% {
+    transform: translateX(-1rem);
+    /* 10px */ }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
 
 /* for Discover our tour button */
 @keyframes moveInBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(2rem);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(3.2rem);
+    /* 32px */ }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* pseudo class */
-.btn:link, 
-.btn:visited { 
+.btn {
+  /* pseudo class */
+  /* 
+    Initial State of pseudo element
+    .btn = parent
+    .btn::after = child
+    */
+  /* Only Discover our tour button will have animation */ }
+  .btn:link, .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1rem 2.5rem;
+    padding: 1.5rem 4rem;
+    /* 15px 40px */
     display: inline-block;
-    border-radius: 100px;
+    border-radius: 10rem;
+    /* 100px */
     transition: all .1s ease-in;
     position: relative;
-}
-
-/* Only Discover our tour button will have animation */
-.btn-animated {
-    animation: moveInBottom 1s ease-out .75s;
-    animation-fill-mode: backwards;
-    /* animation 100% => 0% */
-    /* automatically applies to this style of 0% before animation starts */
-    
-    /* 
-    animation: 
-        animation-name 
-        animation-duration 
-        animation-timing-function 
-        animation-delay;
-    */
-}
-
-.btn:hover {
-    transform: scale(1.05) translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); 
-    /* box-shadow: offset-x offset-y blur rgba; */
-}
-
-.btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-}
-
-.btn-white {
-    background-color: white;
-    color: #777;
-}
-
-/* 
-Initial State of pseudo element
-.btn = parent
-.btn::after = child
-*/ 
-.btn::after {
+    font-size: 1.6rem; }
+  .btn:hover {
+    transform: scale(1.05) translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+    /* box-shadow: offset-x offset-y blur rgba; */ }
+    .btn:hover::after {
+      /* 
+            2nd State of pseudo element
+            pseudo element after for .btn:hover state
+            Make pseudo element grow && fade-out 
+            .btn::after = parent
+            .btn:hover::after = child
+            */
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: white;
+      color: #777; }
+  .btn::after {
     /* Must declare content && display properties */
     content: "";
     display: inline-block;
     /* pseudo elements are treated as children */
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
+    /* 100px */
     position: absolute;
     top: 0;
     left: 0;
     /* position: absolute need a reference 
-    from parent box with position: relative
-    In this case:
-    .btn::after (child) 
-    .btn (parent)
-    */
+        from parent box with position: relative
+        In this case:
+        .btn::after (child) 
+        .btn (parent)
+        */
     z-index: -1;
-    transition: all .4s;
-}
-
-.btn-white::after {
-    background-color: white;
-    color: #777;
-}
-
-/* 
-2nd State of pseudo element
-pseudo element after for .btn:hover state
-Make pseudo element grow && fade-out 
-.btn::after = parent
-.btn:hover::after = child
-*/
-.btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-}
-
+    transition: all .4s; }
+  .btn--animated {
+    animation: moveInBottom 1s ease-out .75s;
+    animation-fill-mode: backwards; }

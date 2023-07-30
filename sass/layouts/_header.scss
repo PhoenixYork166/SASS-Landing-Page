@@ -1,0 +1,31 @@
+.header {
+    height: 95vh; /* To almost 100% */
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, 0.8), 
+        rgba($color-primary-dark, 0.8)), 
+        url('../img/hero.jpg');
+        background-size: cover; /* to fit the box */
+        background-position: top; /* Top of img always stays top */
+        position: relative; /* parent of .logo-box */
+        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        /* clip-path: polygon(0 0, 100% 50%, 0 100%); */
+
+    &__logo-box {
+        position: absolute; /* parent = .header */
+        top: 4rem; /* 40px */
+        left: 4rem; /* 40px */ 
+    }
+
+    &__logo {
+        height: 3.5rem; /* 35px */
+    }
+
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        left: 25%;
+        text-align: center;
+    }
+}
+

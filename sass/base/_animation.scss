@@ -1,0 +1,62 @@
+/* Animations */
+/* For Upper header */
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translate3d(-10rem, -40rem, 0); /* 100px, 400px, 0 */
+    }
+
+    25% {
+        transform: translate3d(-28.8rem, -24rem, 0) rotate(350deg); /* 288px, 240px, 0 */
+    }
+
+    40% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    60% {
+        transform: translate3d(28.8rem, -24rem, 0) rotate(180deg); /* 288px, 240px, 0 */
+    }
+
+    80% {
+        transform: translate3d(0, -40rem, 0) rotate(360deg); /* 0, 400px, 0 */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem); /* 100px */
+    }
+
+    30% {
+
+    }
+
+    80% {
+        transform: translateX(-1rem); /* 10px */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* for Discover our tour button */
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(3.2rem); /* 32px */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
