@@ -1,0 +1,65 @@
+.row {
+    /*
+    If we have enough space, we will have the specified width
+    If we have insufficient space, we will have width: 100%;
+    */
+    max-width: $grid-width;
+    background-color: #eee;
+    margin: 0 auto; // CSS auto calc left & right margin
+    
+    &:not(:last-child) {
+        margin-bottom: $gutter-vertical;
+    }
+
+    // .row::after {}
+    @include clearfix;
+
+    /*
+    To apply effects to all columns
+    using attributes selector
+    e.g. 
+    [alt="Logo"] {
+    }
+    */
+
+    // Selecting all classes starting with "col-"
+    [class^="col-"] {
+        background-color: orange;
+        float: left;
+
+        // Not including last column
+        &:not(:last-child) {
+            margin-right: $gutter-horizontal;
+        }
+    }
+
+    // Columns
+    .col-1-of-2 {
+        width: calc((100% - #{$gutter-horizontal}) /2);
+    }
+
+    .col-1-of-3 {
+        width: calc((100% - 2* #{$gutter-horizontal}) / 3);
+    }
+
+    .col-1-of-4 {
+        width: calc((100% - 3* #{$gutter-horizontal}) / 4);
+    }
+
+    .col-2-of-3 {
+        width: calc(2*((100% - 2* #{$gutter-horizontal})/3) + #{$gutter-horizontal});
+    }
+
+    .col-2-of-4 {
+        // 2 * .col-1-of-4 + #{$gutter-horizontal}
+        width: calc(2*((100% - 3* #{$gutter-horizontal})/4) + #{$gutter-horizontal});
+    }
+
+    .col-3-of-4 {
+        // 3 * .col-1-of-4 + 2*#{$gutter-horizontal}
+        width: calc(3*((100% - 3* #{$gutter-horizontal})/4) + 2*#{$gutter-horizontal});;
+    }
+}
+
+
+

@@ -8,7 +8,7 @@
         background-size: cover; /* to fit the box */
         background-position: top; /* Top of img always stays top */
         position: relative; /* parent of .logo-box */
-        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
         /* clip-path: polygon(0 0, 100% 50%, 0 100%); */
 
     &__logo-box {

@@ -6,10 +6,13 @@
 }
 
 html {
-    /* font-size: 10px; */
-    /* now 1rem = 10px */
-    /* font-size: 100% => 16px */
-    font-size: 62.5%;
+    /* font-size: 10px;
+    now 1rem = 10px
+    font-size: 100% => 16px
+
+    62.5% * 16px = 10px = 1rem
+    */
+    font-size: 62.5%; 
 }
 
 /* To be inherited by child elements */
