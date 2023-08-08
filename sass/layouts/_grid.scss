@@ -4,7 +4,7 @@
     If we have insufficient space, we will have width: 100%;
     */
     max-width: $grid-width;
-    background-color: #eee;
+    // background-color: #eee;
     margin: 0 auto; // CSS auto calc left & right margin
     
     &:not(:last-child) {
@@ -24,7 +24,7 @@
 
     // Selecting all classes starting with "col-"
     [class^="col-"] {
-        background-color: orange;
+        // background-color: orange;
         float: left;
 
         // Not including last column

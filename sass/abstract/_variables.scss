@@ -2,11 +2,21 @@
 $color-primary: #55c57a; // Medium green
 $color-primary-light:  rgba(126, 213, 111, 1); // Light green
 $color-primary-dark: rgba(40, 180, 133, 1); // Dark green
+
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
+
+$color-tertiary-light: #2998ff;
+$color-tertiary-dark: #5643fa;
+
 $color-dark-grey: #777; // Dark grey
 $color-white:#fff; // White
 $color-black: #000; // Black
 
 $color-light-grey-1: #f7f7f7; // light-grey similar to white
+
+// Font
+$default-font-size: 1.6rem;
 
 // Grid
 $grid-width: 114rem;

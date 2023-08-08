@@ -1,0 +1,85 @@
+.card {
+    // Functionality
+
+    // Define perspective on the parent
+    // The lower the value is, the more dramatic the effect is
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    position: relative;
+    // Giving explicit height to fix div height collapse
+    height: 50rem;
+
+    &__side {
+        // Images are overflowing parent in the corners
+        overflow: hidden;
+        font-size: 2rem;
+        height: 50rem;
+        transition: all 1s ease;
+        color: #fff;
+        // Parent collapses with height
+        // when children position = absolute
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        // Hidding the rear side of an element
+        backface-visibility: hidden;
+        border-radius: 3px;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.3);
+        
+        &--front {
+            background-color: $color-white;
+        }
+
+        &--back {
+            // Rear moving to right
+            transform: rotateY(180deg);
+
+            &-1 {
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+        }
+    }
+    
+
+    &:hover &__side--front {
+        // Front moving to left
+        transform: rotateY(-180deg);
+    }
+
+    &:hover &__side--back {
+        transform: rotateY(0);
+    }
+
+    // Front side styling
+    &__picture {
+        background-size: cover;
+        height: 23rem;
+        
+        // Blending background-image: linear-gradient & url
+        background-blend-mode: soft-light;
+        /* Clockwise
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        */
+        // Star
+        -webkit-clip-path: polygon(50% 0, 60% 40%, 100% 40%, 65% 60%, 80% 100%, 
+        50% 80%, 20% 100%, 35% 60%, 0 40%, 40% 40%);
+        clip-path: polygon(50% 0, 60% 40%, 100% 40%, 65% 60%, 80% 100%, 
+        50% 80%, 20% 100%, 35% 60%, 0 40%, 40% 40%);
+        
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../../img//nat-5.jpg);
+        }
+
+        &--2 {
+            background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), url(../../img//nat-6.jpg);
+        }
+
+        &--3 {
+            background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), url(../../img//nat-7.jpg);
+        }   
+    }
+}
+
+// .card:hover .card__side { transformed }
