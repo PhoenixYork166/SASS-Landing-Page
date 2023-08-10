@@ -2,7 +2,7 @@
     width: 75%;
     margin: 0 auto;
     box-shadow: 0 3rem 6rem rgba($color-black, 0.2);
-    background-color: $color-white;
+    background-color: rgba($color-white, .6);
     border-radius: 3px;
     padding: 6rem;
     padding-left: 9rem;
@@ -37,10 +37,9 @@
     &__img {
         height: 100%;
         // Move 4 rem to the left
-        transform: translateX(-4rem) scale(1);
+        transform: translateX(-4rem) scale(1.4);
         backface-visibility: hidden;
         transition: all .5s ease;
-        filter: blur(1px);
     }
 
     &__text {
@@ -51,7 +50,7 @@
         position: absolute;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, 15%);
         font-size: $default-font-size;
         font-weight: 700;
         text-align: center;
@@ -59,7 +58,7 @@
         color: $color-white;
         -webkit-box-decoration-break: clone;
         box-decoration-break: clone;
-        opacity: 1;
+        opacity: 0;
         transition: all .5s ease;
         backface-visibility: hidden;
         filter: contrast(1.05);
@@ -67,17 +66,17 @@
 
     // story:hover story__caption
     &:hover &__caption {
-        opacity: 0;
-        transform: translate(-50%, 10%);
+        opacity: 1;
+        transform: translate(-50%, -50%);
     }
 
     &:hover &__img {
         // Zooms out when story:hover 
-        transform: translateX(-4rem) scale(1.4);
+        transform: translateX(-4rem) scale(1);
         // filter: blur() 
         // brightness(brighter > 100%)
         // hue-rotate 60 deg more violet
         // contrast
-        filter: hue-rotate(60deg) brightness(120%) contrast(1); 
+        filter: blur(3px) hue-rotate(60deg) brightness(100%) contrast(1); 
     }
 }
