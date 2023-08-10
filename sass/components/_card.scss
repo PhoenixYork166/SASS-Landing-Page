@@ -2,83 +2,207 @@
     // Functionality
 
     // Define perspective on the parent
+    // Card flipping effect
     // The lower the value is, the more dramatic the effect is
     perspective: 150rem;
     -moz-perspective: 150rem;
     position: relative;
     // Giving explicit height to fix div height collapse
-    height: 50rem;
+    // For having children position: absolute
+    height: 52rem;
 
+    // .card__side
+    // For front & back sides
     &__side {
         // Images are overflowing parent in the corners
         overflow: hidden;
         font-size: 2rem;
-        height: 50rem;
-        transition: all 1s ease;
-        color: #fff;
+
         // Parent collapses with height
         // when children position = absolute
         position: absolute;
+        // Giving explicit height to fix div height collapse
+        // For having children position: absolute
+        height: 52rem;
+        transition: all 1s ease;
+        
         top: 0;
         left: 0;
         width: 100%;
-        // Hidding the rear side of an element
+
+        // Hidding the back side elements when Front is displayed
+        // Hidding the front side elements when Back is displayed
         backface-visibility: hidden;
         border-radius: 3px;
         box-shadow: 0 1.5rem 4rem rgba($color-black, 0.3);
         
+        // .card__side--front
         &--front {
             background-color: $color-white;
         }
 
+        // Back side contents
+        // .card__side--back
         &--back {
-            // Rear moving to right
+            // Back side defaults flipping to right 180deg 
             transform: rotateY(180deg);
 
+            // .card__side--back-1
             &-1 {
                 background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+
+            // .card__side--back-2
+            &-2 {
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+
+            // .card__side--back-3
+            &-3 {
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
             }
         }
     }
     
-
+    // .card:hover .card__side--front
+    // when .card is hovered > .card__side--front => flip to left
     &:hover &__side--front {
-        // Front moving to left
+        // When .card:hover => Front side flipping to left
         transform: rotateY(-180deg);
     }
 
+    // .card:hover .card__side--back
+    // when .card:hover > .card__side--back => flips back to right
     &:hover &__side--back {
         transform: rotateY(0);
     }
 
+    // .card__picture
     // Front side styling
     &__picture {
         background-size: cover;
         height: 23rem;
         
-        // Blending background-image: linear-gradient & url
-        background-blend-mode: soft-light;
-        /* Clockwise
+        // Blending background-image for child <img>
+        // background-image: linear-gradient($color1, $color2, url('.jpg')
+        background-blend-mode: screen;
+
+        // Clockwise clip-path
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        */
-        // Star
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        
+        /* Star shaped logos
         -webkit-clip-path: polygon(50% 0, 60% 40%, 100% 40%, 65% 60%, 80% 100%, 
         50% 80%, 20% 100%, 35% 60%, 0 40%, 40% 40%);
         clip-path: polygon(50% 0, 60% 40%, 100% 40%, 65% 60%, 80% 100%, 
         50% 80%, 20% 100%, 35% 60%, 0 40%, 40% 40%);
+        */
         
-
+        // .card__picture--1
         &--1 {
             background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../../img//nat-5.jpg);
         }
 
+        // .card__picture--2
         &--2 {
             background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), url(../../img//nat-6.jpg);
         }
 
+        // .card__picture--3
         &--3 {
             background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), url(../../img//nat-7.jpg);
         }   
+    }
+
+    // .card__heading
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $color-white;
+        // To stick on top of .card__picture--n
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        width: 75%;
+    }
+
+    // .card__heading-span
+    // Not a child element of .card__heading
+    // A new element in BEM
+    &__heading-span {
+        padding: 1rem 1.5rem;
+        // box-decoration-break needs a prefix
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+
+        // .card__heading-span--1
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85), rgba($color-secondary-dark, .85));
+        }
+
+        // .card__heading-span--2
+        &--2 {
+            background-image: linear-gradient(to right bottom, rgba($color-primary-light, .85), rgba($color-primary-dark, .85));
+        }
+
+        // .card__heading-span--3
+        &--3 {
+            background-image: linear-gradient(to right bottom, rgba($color-tertiary-light, .85), rgba($color-tertiary-dark, .85));
+        }
+    }
+
+    // .card__details
+    &__details {
+        padding: 3rem;
+
+        // .card__details > ul
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+
+            // .card__details > ul > li
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+                
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-light-grey-2;
+                }
+            }
+        }
+    }
+
+    // .card__cta
+    // Back side styling
+    &__cta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+    }
+
+    &__price-box {
+        text-align: center;
+        color: $color-white;
+        margin-bottom: 8rem;
+    }
+
+    &__price-only {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+
+    &__price-value {
+        font-size: 6rem;
+        font-weight: 100;
     }
 }
 

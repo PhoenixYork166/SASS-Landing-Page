@@ -139,6 +139,12 @@ body {
 .u-margin-bottom-small {
   margin-bottom: 2rem; }
 
+.u-margin-top-big {
+  margin-top: 8rem; }
+
+.u-margin-top-huge {
+  margin-top: 10rem; }
+
 .btn {
   /* pseudo class */
   /* 
@@ -181,6 +187,11 @@ body {
     .btn--white::after {
       background-color: white;
       color: #777; }
+  .btn--green {
+    background-color: #55c57a;
+    color: #fff; }
+    .btn--green::after {
+      background-color: #55c57a; }
   .btn::after {
     /* Must declare content && display properties */
     content: "";
@@ -200,7 +211,8 @@ body {
         .btn (parent)
         */
     z-index: -1;
-    transition: all .4s; }
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease; }
   .btn--animated {
     animation: moveInBottom 1s ease-out .75s;
     animation-fill-mode: backwards; }
@@ -276,14 +288,13 @@ body {
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
-  height: 50rem; }
+  height: 52rem; }
   .card__side {
     overflow: hidden;
     font-size: 2rem;
-    height: 50rem;
-    transition: all 1s ease;
-    color: #fff;
     position: absolute;
+    height: 52rem;
+    transition: all 1s ease;
     top: 0;
     left: 0;
     width: 100%;
@@ -296,6 +307,10 @@ body {
       transform: rotateY(180deg); }
       .card__side--back-1 {
         background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+      .card__side--back-2 {
+        background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+      .card__side--back-3 {
+        background-image: linear-gradient(to right bottom, #2998ff, #5643fa); }
   .card:hover .card__side--front {
     transform: rotateY(-180deg); }
   .card:hover .card__side--back {
@@ -303,18 +318,123 @@ body {
   .card__picture {
     background-size: cover;
     height: 23rem;
-    background-blend-mode: soft-light;
-    /* Clockwise
-        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        */
-    -webkit-clip-path: polygon(50% 0, 60% 40%, 100% 40%, 65% 60%, 80% 100%, 50% 80%, 20% 100%, 35% 60%, 0 40%, 40% 40%);
-    clip-path: polygon(50% 0, 60% 40%, 100% 40%, 65% 60%, 80% 100%, 50% 80%, 20% 100%, 35% 60%, 0 40%, 40% 40%); }
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    /* Star shaped logos
+        -webkit-clip-path: polygon(50% 0, 60% 40%, 100% 40%, 65% 60%, 80% 100%, 
+        50% 80%, 20% 100%, 35% 60%, 0 40%, 40% 40%);
+        clip-path: polygon(50% 0, 60% 40%, 100% 40%, 65% 60%, 80% 100%, 
+        50% 80%, 20% 100%, 35% 60%, 0 40%, 40% 40%);
+        */ }
     .card__picture--1 {
       background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../../img//nat-5.jpg); }
     .card__picture--2 {
       background-image: linear-gradient(to right bottom, #7ed56f, #28b485), url(../../img//nat-6.jpg); }
     .card__picture--3 {
       background-image: linear-gradient(to right bottom, #2998ff, #5643fa), url(../../img//nat-7.jpg); }
+  .card__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: #fff;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75%; }
+  .card__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; }
+    .card__heading-span--1 {
+      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
+    .card__heading-span--2 {
+      background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.85), rgba(40, 180, 133, 0.85)); }
+    .card__heading-span--3 {
+      background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.85), rgba(86, 67, 250, 0.85)); }
+  .card__details {
+    padding: 3rem; }
+    .card__details ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto; }
+      .card__details ul li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem; }
+        .card__details ul li:not(:last-child) {
+          border-bottom: 1px solid #eee; }
+  .card__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center; }
+  .card__price-box {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 8rem; }
+  .card__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase; }
+  .card__price-value {
+    font-size: 6rem;
+    font-weight: 100; }
+
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: 1.6rem;
+  transform: skewX(-12deg); }
+  .story > * {
+    transform: skewX(12deg); }
+  .story__shape {
+    position: relative;
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skewX(12deg); }
+  .story__img {
+    height: 100%;
+    transform: translateX(-4rem) scale(1);
+    backface-visibility: hidden;
+    transition: all .5s ease;
+    filter: blur(1px); }
+  .story__caption {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    opacity: 1;
+    transition: all .5s ease;
+    backface-visibility: hidden;
+    filter: contrast(1.05); }
+  .story:hover .story__caption {
+    opacity: 0;
+    transform: translate(-50%, 10%); }
+  .story:hover .story__img {
+    transform: translateX(-4rem) scale(1.4);
+    filter: hue-rotate(60deg) brightness(120%) contrast(1); }
 
 .section-about {
   background-color: #f7f7f7;
@@ -345,8 +465,12 @@ body {
 
 .section-tours {
   background-color: #f7f7f7;
-  padding: 25rem 0 50rem 0;
+  padding: 25rem 0 15rem 0;
   margin-top: -10vh; }
+
+.section-stories {
+  padding: 15rem 0;
+  background-color: aqua; }
 
 .row {
   /*

@@ -45,6 +45,15 @@
         }
     }
 
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after {
+            background-color: $color-primary;
+        }
+    }
+
     /* 
     Initial State of pseudo element
     .btn = parent
@@ -68,7 +77,8 @@
         .btn (parent)
         */
         z-index: -1;
-        transition: all .4s;
+        transition: all .4s ease;
+        -webkit-transition: all .4s ease;
     }
 
     /* Only Discover our tour button will have animation */
